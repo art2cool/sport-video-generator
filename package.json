@@ -4,6 +4,7 @@
   "description": "",
   "main": "parser.js",
   "dependencies": {
+    "canvas": "^1.5.0",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {},
