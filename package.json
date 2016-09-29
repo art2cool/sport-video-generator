@@ -1,0 +1,22 @@
+{
+  "name": "sport-video-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "render-video.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/art2cool/sport-video-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/art2cool/sport-video-generator/issues"
+  },
+  "homepage": "https://github.com/art2cool/sport-video-generator#readme",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.0"
+  }
+}
