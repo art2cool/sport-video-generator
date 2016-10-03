@@ -6,7 +6,7 @@ const path = require('path');
 //let command = new FfmpegCommand();
 
 let filename = 'goprobike.mp4';
-let filename2 = 'inputfile.mp4';
+let filename2 = 'GOPR2381.MP4';
 let filename3 = 'frame_%5d.png';
 
 let filepath = path.join(__dirname + '/video-sample/' + filename);
@@ -14,12 +14,13 @@ let filepath2 = path.join(__dirname + '/video-sample/' + filename2);
 let filepath3 = path.join(__dirname + '/image-simple/' + filename3);
 
 
-// ffmpeg(filepath)
-//     .ffprobe(function(err, data) {
-//         console.log('file2 metadata:');
-//         console.dir(data);
-//      });
-/*
+ffmpeg(filepath2)
+    .ffprobe(function(err, data) {
+        console.log('file2 metadata:');
+    //    console.log(data);
+        console.log(`time - ${data.format.tags.creation_time}`)
+     });
+     /*
     ffmpeg(filepath)
         // .videoFilter(      {
         //     filter: 'drawtext',
@@ -94,20 +95,23 @@ ffmpeg -itsoffset 30 -i video_pip.mp4 -i video_master.mp4 -filter_complex
  -profile:v main -level 3.1 -b:v 440k -ar 44100 -ab 128k -s 1920x1080 -vcodec h264 -acodec libfaac output.mp4
 
 */
-
-ffmpeg(filepath)
-.fpsOutput('25')
-.setStartTime('00:00:05')
-    .setDuration('30')
+ffmpeg(filepath2)
+//.setStartTime('00:00:05')
+//    .setDuration('30')
     //.input(filepath2)
     .addInput(filepath3)
+    .inputFps(1)
     .complexFilter([
-        // '[0]scale=640:480[bg]',
-         '[1]scale=1.5*iw:1.5*ih:interl=1[pip]',
+         '[0]scale=0.5*iw:0.5*ih[bg]',
+        //'[1][pip]',
         // '[2]scale=640:480[image]',
+        // {
+        //     filter: 'framerate', options: {fps: 1},
+        //     inputs: '[1]', outputs: 'pip'
+        // },
         {
-          filter: 'overlay', options: { x: 10, y: 20},
-          inputs: ['[0]', 'pip'], outputs: 'piped'
+          filter: 'overlay', options: { x: 100, y: 20},
+          inputs: ['bg', '[1]'], outputs: 'piped'
       },
     //     {
     //       filter: 'overlay', options: { x: 0, y: 0},
