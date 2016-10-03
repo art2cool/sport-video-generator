@@ -1,6 +1,5 @@
-var fs = require('fs'),
-    xml2js = require('xml2js'),
-    util = require('util');
+var fs = require('fs');
+var xml2js = require('xml2js');
 
 
 var parseNumbers = function ( str ) {

@@ -5,6 +5,7 @@
   "main": "parser.js",
   "dependencies": {
     "canvas": "^1.5.0",
+    "googlemaps": "^1.11.1",
     "xml2js": "^0.4.17"
   },
   "devDependencies": {},
